@@ -1,0 +1,56 @@
+<html>
+<head>
+<style>
+table, th, td {
+border: 1px solid black;
+border-collapse:collapse;
+}
+th, td {
+padding: 5px;
+}
+</style>
+</head>
+<body>
+<h3> Retreiving information from XML Database</h3>
+User ID : <input type="text" id="uid"> </input>
+<button onclick="test()"> Submit </button>
+<script>
+function test()
+{
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.open("GET","emp.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+
+var tmp1;
+tmp1= parseInt(document.getElementById('uid').value);
+document.writeln(tmp1+"<table>");
+
+document.write("<tr><th>Id</th><th>Name</th><th>Designation</th></tr>");
+var x=xmlDoc.getElementsByTagName("EMPLOYEE");
+for (i=0;i<x.length;i++)
+{
+var tmp=parseInt(x[i].getElementsByTagName("ID")[0]	.childNodes[0].nodeValue);
+if(tmp==tmp1)
+{
+document.write("<tr><td>");
+document.write(x[i].getElementsByTagName("ID")[0]	.childNodes[0].nodeValue);
+document.write("</td><td>");
+document.write(x[i].getElementsByTagName("NAME")[0]	.childNodes[0].nodeValue);
+document.write("</td><td>");
+document.write(x[i].getElementsByTagName("DESIG")[0]	.childNodes[0].nodeValue);
+document.write("</td></tr>"); 
+ }//if
+}//for
+document.write("</table>");
+}
+</script>
+</body>
+</html>

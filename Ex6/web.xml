@@ -1,0 +1,29 @@
+<servlet>
+    <init-param>
+         <param-name>usernames</param-name>
+         <param-value>panimalar,arun,bala</param-value>
+  </init-param>
+  <init-param>
+         <param-name>passwords</param-name>
+         <param-value>panimalar,arun,bala</param-value>
+  </init-param>
+  <init-param>   
+         <param-name>cardIDs</param-name>
+         <param-value>111111,222222,333333</param-value>
+  </init-param>
+ <servlet-name>LoginServlet</servlet-name>
+  <servlet-class>shopping.LoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>LoginServlet</servlet-name>
+   <url-pattern>/LoginServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+     <servlet-name>LoginSuccess</servlet-name>
+     <servlet-class>shopping.LoginSuccess</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>LoginSuccess</servlet-name>
+   <url-pattern>/LoginSuccess</url-pattern>
+</servlet-mapping>

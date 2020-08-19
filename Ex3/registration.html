@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var re_id=/^\w{5,12}$/
+var re_pwd=/^\w{8,12}$/
+var re_name=/^[a-zA-Z.]+$/
+var re_email=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+var re_pin=/^\d{6,6}$/
+
+function isChecked(x)
+{
+  var flag=false;
+  for(var i=0;i<x.length;i++)
+  	if(x[i].checked)
+	{
+		flag=true;
+		break;
+        }
+  return flag;
+}
+
+function formValidation()
+{
+if(!re_id.test(document.frm.userid.value))
+{
+	alert("ID can contain alphabet,digit,_ and must be between 5 and 12");
+	document.frm.userid.focus();
+	return false;
+}
+else if(!re_pwd.test(document.frm.passid.value))
+{
+	alert("password must be:\n-between 8 and 12");
+	document.frm.passid.focus();
+	return false;
+}
+else if(!re_name.test(document.frm.username.value))
+{
+	alert("name must contain alphabet and .");
+	document.frm.username.focus();
+	return false;
+}
+else if(!(document.frm.dob.value!=""))
+{
+	alert("dob cannot be empty.");
+	document.frm.dob.focus();
+	return false;
+}
+else if(document.frm.country.value=="default")
+{
+	alert("select any country");
+	document.frm.country.focus();
+	return false;
+}
+else if(!re_pin.test(document.frm.zip.value))
+{
+	alert("pin code must contain 6 digits");
+	document.frm.zip.focus();
+	return false;
+}
+
+else if(!re_email.test(document.frm.email.value))
+{
+	alert("email is empty or not valid");
+	document.frm.email.focus();
+	return false;
+}
+
+else if(!isChecked(document.frm.interest))
+{
+	alert("select your area of interest");
+	document.frm.interest[0].focus();
+	return false;
+}
+
+
+else 
+	return true;
+
+}
+
+</script>
+</head>
+<body>
+<pre>
+<h1>Registration Form</h1>
+<form name='frm' onSubmit="return formValidation()" action="login.html">
+User id   :<input type="text" name="userid" maxlength=12 required autofocus/>
+
+Password  :<input type="password" name="passid" maxlength=12 />
+
+Name      :<input type="text" name="username"  />
+
+DOB      :<input type="date" name="dob"/>
+
+Country   :<select name="country">
+<option  value="default" selected>(Please select a country)</option>
+<option value="AF">Australia</option>
+<option value="AL">Canada</option>
+<option value="DZ">India</option>
+<option value="AD">USA</option>
+</select>
+
+ZIP Code :<input type="text"  maxlength=6 name="zip" />
+
+Email    :<input type="text" name="email" size="50"/>
+
+Sex      :<input type="radio" name="sex" value="Male" checked />Male <input type="radio" name="sex" value="Female" />Female
+
+Interested in :<input type="checkbox" name="interest" value="sports"/>sports<input type="checkbox" name="interest" value="music" />music
+
+<input type="submit"/><input type="reset"/>
+</form>
+</pre>
+</body>
+</html>

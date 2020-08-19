@@ -1,0 +1,77 @@
+<!doctype html> 
+<html> 
+<head> 
+<script> 
+var re_card=/^\d{12}$/ 
+var re_cvv=/^\d{3}$/ 
+
+function validate() 
+{ 
+var c=document.getElementById("card"); 
+var n=document.getElementById("name"); 
+var e=document.getElementById("exdate"); 
+var cvv=document.getElementById("cvv"); 
+if (!re_card.test(c.value)) 
+{ 
+alert("Card Number should be 12 digit number..."); 
+c.select(); 
+return false; 
+} 
+else if(n.value=="") 
+{ 
+alert("name should not be empty..."); 
+n.focus(); 
+return false; 
+
+} 
+else if(e.value=="") 
+{ 
+alert("expired name should not be empty..."); 
+e.focus(); 
+return false; 
+
+} 
+else if (!re_cvv.test(cvv.value)) 
+{ 
+alert("Cvv should be 3 digit number..."); 
+cvv.select(); 
+return false; 
+} 
+
+else 
+{ 
+alert("thank you for purchasing with us..."); 
+window.close(); 
+return true; 
+} 
+
+} 
+
+
+</script> 
+</head> 
+<body style="font:bold italic 32px/12px arial narrow;color:white;"> 
+<form name="myform" onSubmit="return validate()"> 
+<center> 
+<pre style="position:absolute; 
+border:34px outset gold; 
+left:420px; 
+top:130px; 
+padding:20px; 
+background:url('indianrupee.jpg');"> 
+
+CARD NO <input id="card" type="text" required maxlength=12 autofocus /><br/> 
+
+NAME <input id="name" type="text" name="name"/><br/> 
+
+EXPIRY DATE <input type="month" id="exdate" /><br/> 
+
+CVV <input id="cvv" type="text" maxlength=3/> 
+
+
+<input type="submit"/> 
+</pre> 
+</center> 
+</form> 
+</body> 
+</html> 

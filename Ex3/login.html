@@ -1,0 +1,50 @@
+<!DocType html> 
+<html> 
+<head> 
+<script> 
+function authenticate() 
+{ 
+var name=document.getElementById("log"); 
+var pwd=document.getElementById("pwd"); 
+
+var users=["ram","radha","guna"]; 
+var passwords=["sita","krishna","secret"]; 
+
+
+if(users.indexOf(name.value)==-1) 
+{ 
+alert("Invalid user name... try again..."); 
+name.select(); 
+return false; 
+} 
+
+else if(passwords[users.indexOf(name.value)]!=pwd.value) 
+{ 
+alert("Invalid password... try again..."); 
+pwd.select(); 
+return false; 
+} 
+else 
+
+return true; 
+} 
+</script> 
+</head> 
+<body style="line-height:12pt;"> 
+<div style="position:absolute; 
+border:34px ridge red; 
+left:520px; 
+top:150px; 
+padding:20px; 
+background:gold;"> 
+<center> 
+<form action="payment.html" onSubmit="return authenticate()"> 
+User Name :<input id="log" type="text" required autofocus/><br/><br/> 
+Password:<input id="pwd" type="password" required/><br/><br/> 
+<br/> 
+<input type="submit"><input type="reset"> 
+</form> 
+</center> 
+</div> 
+</body> 
+</html> 
